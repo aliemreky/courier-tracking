@@ -23,13 +23,13 @@ public class CourierLocationController implements CourierLocationApi {
     }
 
     @Override
-    public ResponseModel<CourierLocationLog> getLastCourierlocation(Long courierId) {
+    public ResponseModel<CourierLocationLog> getLastCourierLocation(Long courierId) {
         Optional<CourierLocationLog> locationLog = courierLocationLogService.findLastByCourier(courierId);
 
         if(locationLog.isPresent())
             return ResponseModel.success(locationLog.get());
 
-        return ResponseModel.warning(null, "The Courier " + courierId + " not found!", HttpStatus.NOT_FOUND);
+        return ResponseModel.warning(null, "The Location " + courierId + " not found for courier " + courierId, HttpStatus.NOT_FOUND);
     }
 
     @Override

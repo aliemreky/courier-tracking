@@ -64,14 +64,14 @@ public class StoreServiceTest {
         Store store = createStore();
         when(storeRepository.findById(store.getId())).thenReturn(Optional.of(store));
 
-        Store result = storeService.findStoreById(store.getId());
+        Optional<Store> result = storeService.findStoreById(store.getId());
 
-        assertThat(result).isNotNull();
-        assertThat(result.getId()).isEqualTo(store.getId());
-        assertThat(result.getName()).isEqualTo(store.getName());
-        assertThat(result.getLatitude()).isEqualTo(store.getLatitude());
-        assertThat(result.getLongitude()).isEqualTo(store.getLongitude());
-        assertThat(result.getCreateDate()).isEqualTo(store.getCreateDate());
+        assertThat(result.isPresent()).isTrue();
+        assertThat(result.get().getId()).isEqualTo(store.getId());
+        assertThat(result.get().getName()).isEqualTo(store.getName());
+        assertThat(result.get().getLatitude()).isEqualTo(store.getLatitude());
+        assertThat(result.get().getLongitude()).isEqualTo(store.getLongitude());
+        assertThat(result.get().getCreateDate()).isEqualTo(store.getCreateDate());
     }
 
     @Test

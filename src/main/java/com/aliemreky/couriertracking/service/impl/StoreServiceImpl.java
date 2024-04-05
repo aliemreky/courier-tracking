@@ -50,15 +50,8 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     @Cacheable(value = "stores", key = "#id")
-    public Store findStoreById(Long id) {
-        Optional<Store> storeOptional = storeRepository.findById(id);
-
-        if (storeOptional.isPresent()) {
-            return storeOptional.get();
-        } else {
-            log.info("{} id store not found", id);
-            throw new RuntimeException(id + " store not found");
-        }
+    public Optional<Store> findStoreById(Long id) {
+        return storeRepository.findById(id);
     }
 
     @Override

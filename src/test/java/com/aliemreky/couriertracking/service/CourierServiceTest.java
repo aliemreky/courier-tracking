@@ -63,14 +63,14 @@ public class CourierServiceTest {
         when(courierRepository.findById(dummyCourier.getId())).thenReturn(Optional.of(dummyCourier));
 
         //when
-        Courier result = courierService.getCourierById(dummyCourier.getId());
+        Optional<Courier> result = courierService.getCourierById(dummyCourier.getId());
 
         //then
-        assertThat(result).isNotNull();
-        assertThat(result.getId()).isEqualTo(dummyCourier.getId());
-        assertThat(result.getName()).isEqualTo(dummyCourier.getName());
-        assertThat(result.getSurname()).isEqualTo(dummyCourier.getSurname());
-        assertThat(result.getCreateDate()).isEqualTo(dummyCourier.getCreateDate());
+        assertThat(result.isPresent()).isTrue();
+        assertThat(result.get().getId()).isEqualTo(dummyCourier.getId());
+        assertThat(result.get().getName()).isEqualTo(dummyCourier.getName());
+        assertThat(result.get().getSurname()).isEqualTo(dummyCourier.getSurname());
+        assertThat(result.get().getCreateDate()).isEqualTo(dummyCourier.getCreateDate());
     }
 
     @Test

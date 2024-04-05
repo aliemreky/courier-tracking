@@ -37,7 +37,7 @@ public class CourierLocationLogServiceImpl implements CourierLocationLogService 
         CourierLocationLog savedCourierLocationLog = courierLocationLogRepository.save(courierLocationLog);
         notifyObserver(savedCourierLocationLog);
 
-        log.info("Courier geolocation created successfully. CourierId: {}, CourierGeolocationId: {}", courierId, savedCourierLocationLog.getId());
+        log.info("Courier location created successfully");
 
         return savedCourierLocationLog;
     }

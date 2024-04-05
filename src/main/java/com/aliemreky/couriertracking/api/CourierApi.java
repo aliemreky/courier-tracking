@@ -17,12 +17,12 @@ public interface CourierApi {
     @PostMapping(value = "/create", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     ResponseModel<Courier> create(@RequestBody @Valid CreateCourierRequest request);
 
-    @DeleteMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
     ResponseModel<Boolean> delete(@PathVariable @NotNull Long id);
 
-    @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
-    ResponseModel<Courier> getCourierById(@PathVariable @NotNull Long id) ;
+    @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
+    ResponseModel<Courier> getCourierById(@PathVariable @NotNull Long id);
 
-    @GetMapping(value = "/all", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/all", produces = APPLICATION_JSON_VALUE)
     ResponseModel<List<Courier>> getAllCourier();
 }

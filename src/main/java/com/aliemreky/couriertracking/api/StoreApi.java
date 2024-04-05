@@ -18,12 +18,12 @@ public interface StoreApi {
     @PostMapping(value = "/create", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     ResponseModel<Store> create(@RequestBody @Valid CreateStoreRequest request);
 
-    @DeleteMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
     ResponseModel<Boolean> delete(@PathVariable @NotNull Long id);
 
-    @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
     ResponseModel<Store> getStoreById(@PathVariable @NotNull Long id);
 
-    @GetMapping(value = "/all", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/all", produces = APPLICATION_JSON_VALUE)
     ResponseModel<List<Store>> getAllStore();
 }

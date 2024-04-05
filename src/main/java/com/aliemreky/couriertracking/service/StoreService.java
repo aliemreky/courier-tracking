@@ -14,7 +14,7 @@ public interface StoreService {
 
     Boolean delete(Long id);
 
-    Store findStoreById(Long id);
+    Optional<Store> findStoreById(Long id);
 
     List<Store> getAllStore();
 }

@@ -43,16 +43,8 @@ public class CourierServiceImpl implements CourierService {
     }
 
     @Override
-    public Courier getCourierById(Long id) {
-
-        Optional<Courier> courierOptional = courierRepository.findById(id);
-
-        if (courierOptional.isPresent()) {
-            return courierOptional.get();
-        } else {
-            log.info("{} id courier not found", id);
-            throw new RuntimeException(id + " courier not found");
-        }
+    public Optional<Courier> getCourierById(Long id) {
+        return courierRepository.findById(id);
     }
 
     @Override
