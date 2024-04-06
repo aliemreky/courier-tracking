@@ -79,8 +79,9 @@ public class StoreServiceTest {
         Long storeId = 99L;
         when(storeRepository.findById(storeId)).thenReturn(Optional.empty());
 
-        Throwable exception = assertThrows(RuntimeException.class, () -> storeService.findStoreById(storeId));
-        assertEquals("99 store not found", exception.getMessage());
+        Optional<Store> optionalStore = storeService.findStoreById(storeId);
+
+        assertThat(optionalStore.isEmpty()).isTrue();
     }
 
     @Test

@@ -57,7 +57,7 @@ public class CourierServiceTest {
     }
 
     @Test
-    public void findById_shouldGetCourier() {
+    public void getCourierById_shouldGetCourier() {
         //given
         Courier dummyCourier = getDummyCourier();
         when(courierRepository.findById(dummyCourier.getId())).thenReturn(Optional.of(dummyCourier));
@@ -74,26 +74,24 @@ public class CourierServiceTest {
     }
 
     @Test
-    public void findById_shouldGetThrow_WhenCourierIsNull() {
+    public void getCourierById_WhenCourierIsNull() {
         Long courierId = 1L;
         when(courierRepository.findById(courierId)).thenReturn(Optional.empty());
 
-        Throwable exception = assertThrows(RuntimeException.class, () -> courierService.getCourierById(courierId));
-        assertEquals("1 courier not found", exception.getMessage());
+        Optional<Courier> courierOptional = courierService.getCourierById(courierId);
+
+        assertThat(courierOptional.isEmpty()).isTrue();
     }
 
     @Test
     public void findAll_shouldGetCouriers() {
-        //given
         List<Courier> couriers = new ArrayList<>();
         couriers.add(getDummyCourier());
         couriers.add(getDummyCourier());
         when(courierRepository.findAll()).thenReturn(couriers);
 
-        //when
         List<Courier> resultList = courierService.getAllCourier();
 
-        //then
         assertThat(resultList.size()).isEqualTo(couriers.size());
         assertThat(resultList.get(0)).isEqualTo(couriers.get(0));
         assertThat(resultList.get(1)).isEqualTo(couriers.get(1));
